@@ -4,16 +4,16 @@ An automated staking bot for Base blockchain that periodically claims VVV reward
 
 ## Features
 
-🚀 **Automated Claiming**: Automatically claims pending rewards from staking contract
-🤖 **Auto-Restaking**: Immediately stakes claimed rewards to compound returns
-⛽ **Gas Price Protection**: Configurable maximum gas price to avoid high-fee transactions
-🎯 **Fine-tuning**: Configuration with multiple parameters
-♨️ **Health Monitoring**: Regular health checks to ensure bot stability
-📊 **Comprehensive Metrics**: Tracks performance, gas usage, and success rates
-🛡️ **Error Recovery**: Intelligent retry logic with exponential backoff
-🔐 **Secure Key Storage**: Encrypted private key storage with password protection
-⚡ **Graceful Shutdown**: Proper cleanup on termination signals
-🐳 **Full Docker support** with multiple deployment options
+- 🚀 **Automated Claiming**: Automatically claims pending rewards from staking contract
+- 🤖 **Auto-Restaking**: Immediately stakes claimed rewards to compound returns
+- ⛽ **Gas Price Protection**: Configurable maximum gas price to avoid high-fee transactions
+- 🎯 **Fine-tuning**: Configuration with multiple parameters
+- ♨️ **Health Monitoring**: Regular health checks to ensure bot stability
+- 📊 **Comprehensive Metrics**: Tracks performance, gas usage, and success rates
+- 🛡️ **Error Recovery**: Intelligent retry logic with exponential backoff
+- 🔐 **Secure Key Storage**: Encrypted private key storage with password protection
+- ⚡ **Graceful Shutdown**: Proper cleanup on termination signals
+- 🐳 **Full Docker support** with multiple deployment options
 
 ## 📋 Prerequisites
 
