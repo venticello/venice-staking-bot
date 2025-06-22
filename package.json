@@ -1,0 +1,22 @@
+{
+  "name": "venice-staking-bot",
+  "version": "1.0.0",
+  "description": "Automatic VVV restaking bot",
+  "keywords": ["bot", "base", "vvv", "venice", "restake"],
+  "author": "Venticello",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "viem": "^2.31.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "private": true
+}
