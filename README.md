@@ -2,22 +2,22 @@
 
 An automated staking bot for Base blockchain that periodically claims VVV rewards and automatically restakes them to maximize your staking returns.
 
-## 🚀 Features
+## Features
 
-- 🚀**Automated Claiming**: Automatically claims pending rewards from staking contract
-- 🤖**Auto-Restaking**: Immediately stakes claimed rewards to compound returns
-- ⛽**Gas Price Protection**: Configurable maximum gas price to avoid high-fee transactions
-- 🎯**Fine-tuning**: Configuration with multiple parameters
-- ♨️**Health Monitoring**: Regular health checks to ensure bot stability
-- 📊**Comprehensive Metrics**: Tracks performance, gas usage, and success rates
-- 🛡️**Error Recovery**: Intelligent retry logic with exponential backoff
-- 🔐**Secure Key Storage**: Encrypted private key storage with password protection
-- ⚡ **Graceful Shutdown**: Proper cleanup on termination signals
-- 🐳**Full Docker support** with multiple deployment options
-  🎯
+🚀 **Automated Claiming**: Automatically claims pending rewards from staking contract
+🤖 **Auto-Restaking**: Immediately stakes claimed rewards to compound returns
+⛽ **Gas Price Protection**: Configurable maximum gas price to avoid high-fee transactions
+🎯 **Fine-tuning**: Configuration with multiple parameters
+♨️ **Health Monitoring**: Regular health checks to ensure bot stability
+📊 **Comprehensive Metrics**: Tracks performance, gas usage, and success rates
+🛡️ **Error Recovery**: Intelligent retry logic with exponential backoff
+🔐 **Secure Key Storage**: Encrypted private key storage with password protection
+⚡ **Graceful Shutdown**: Proper cleanup on termination signals
+🐳 **Full Docker support** with multiple deployment options
+
 ## 📋 Prerequisites
 
-- Node.js v16 or higher
+- Node.js v18 or higher
 - npm or yarn package manager
 - Base network ETH for gas fees
 - Tokens to stake in the VVV staking contract
