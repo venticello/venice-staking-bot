@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  venice-staking-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: venice-staking-bot
+    restart: unless-stopped
+    stdin_open: true  # Для интерактивного ввода
+    tty: true         # Для поддержки TTY
+    volumes:
+      - ./.env.encrypted:/app/.env.encrypted:ro  # Mount the encrypted file
+      - ./logs:/app/logs  # Optional: Mount logs directory
+    environment:
+      - NODE_ENV=production
+    # Если нужен доступ к сети
+    # networks:
+    #   - app-network
+
+# networks:
+#   app-network:
+#     driver: bridge

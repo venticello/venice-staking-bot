@@ -4,15 +4,17 @@ An automated staking bot for Base blockchain that periodically claims VVV reward
 
 ## 🚀 Features
 
-- **Automated Claiming**: Automatically claims pending rewards from staking contracts
-- **Auto-Restaking**: Immediately stakes claimed rewards to compound returns
-- **Gas Price Protection**: Configurable maximum gas price to avoid high-fee transactions
-- **Health Monitoring**: Regular health checks to ensure bot stability
-- **Comprehensive Metrics**: Tracks performance, gas usage, and success rates
-- **Error Recovery**: Intelligent retry logic with exponential backoff
-- **Secure Key Storage**: Encrypted private key storage with password protection
-- **Graceful Shutdown**: Proper cleanup on termination signals
-
+- 🚀**Automated Claiming**: Automatically claims pending rewards from staking contract
+- 🤖**Auto-Restaking**: Immediately stakes claimed rewards to compound returns
+- ⛽**Gas Price Protection**: Configurable maximum gas price to avoid high-fee transactions
+- 🎯**Fine-tuning**: Configuration with multiple parameters
+- ♨️**Health Monitoring**: Regular health checks to ensure bot stability
+- 📊**Comprehensive Metrics**: Tracks performance, gas usage, and success rates
+- 🛡️**Error Recovery**: Intelligent retry logic with exponential backoff
+- 🔐**Secure Key Storage**: Encrypted private key storage with password protection
+- ⚡ **Graceful Shutdown**: Proper cleanup on termination signals
+- 🐳**Full Docker support** with multiple deployment options
+  🎯
 ## 📋 Prerequisites
 
 - Node.js v16 or higher
@@ -35,6 +37,60 @@ npm install
 yarn install
 ```
 
+## 🔐 Security Setup
+
+### First-time Setup
+
+1. **Setup encrypted private key storage**:
+```bash
+npm run build
+node dist/index.js --setup
+```
+
+2. **Enter a strong password** when prompted (this will encrypt your private key)
+
+3. **Enter your private key**
+
+The bot will create an encrypted file `.env.encrypted` to store your private key securely.
+
+## 🚀 Usage
+
+### Basic Usage
+
+```bash
+npm run start
+# or
+node dist/index.js
+```
+
+## Running with Docker
+
+You can build and run the bot using Docker for a fully isolated and reproducible environment.
+
+### Build the Docker image
+
+```bash
+docker build -t venice-staking-bot .
+# or
+npm run docker:build
+```
+
+### Run the bot container
+
+```bash
+docker run -it --rm --name venice-staking-bot venice-staking-bot
+# or
+npm run docker:run 
+
+# After entering password and seeing "✅ Wallet and contracts initialized"
+# Press: Ctrl+P, then Ctrl+Q to detach
+# or
+# Press `Ctrl+C` in the terminal to stop the bot gracefully.
+
+```
+
+For advanced usage see the [RunInDocker.md](RunInDocker.md) file in the repository.
+---
 ## ⚙️ Configuration
 
 The bot uses a configuration object with the following options:
@@ -71,34 +127,6 @@ const DEFAULT_CONFIG = {
     healthCheckInterval: 60,
     enableMetrics: true
 }
-```
-
-## 🔐 Security Setup
-
-### First-time Setup
-
-1. **Setup encrypted private key storage**:
-```bash
-npm run start -- --setup
-# or
-npm run build
-node dist/index.js --setup
-```
-
-2. **Enter a strong password** when prompted (this will encrypt your private key)
-
-3. **Enter your private key** 
-
-The bot will create an encrypted file to store your private key securely.
-
-## 🚀 Usage
-
-### Basic Usage
-
-```bash
-npm run start
-# or
-node dist/index.js
 ```
 
 ### Custom Configuration
@@ -243,7 +271,7 @@ This bot is provided as-is without warranties. Use at your own risk. Always:
 
 ## 📄 License
 
-MIT License — see (LICENSE)[LICENSE] file for details
+[MIT](LICENSE)
 
 ---
 

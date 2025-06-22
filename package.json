@@ -1,6 +1,6 @@
 {
   "name": "venice-staking-bot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Automatic VVV restaking bot",
   "keywords": ["bot", "base", "vvv", "venice", "restake"],
   "author": "Venticello",
@@ -8,7 +8,11 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "ts-node src/index.ts"
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "docker:build": "docker build -t venice-staking-bot .",
+    "docker:run": "docker run -it --rm --name venice-staking-bot venice-staking-bot",
+    "docker:run-detached": "docker run -d --name venice-staking-bot venice-staking-bot"
   },
   "dependencies": {
     "viem": "^2.31.2"

@@ -28,8 +28,8 @@ class VeniceStakingBot {
     private stakingContract: any;
     private tokenContract: any;
     private isRunning: boolean = false;
-    private mainInterval?: NodeJS.Timeout;
-    private healthCheckInterval?: NodeJS.Timeout;
+    private mainInterval?: NodeJS.Timeout | undefined;
+    private healthCheckInterval?: NodeJS.Timeout | undefined;
     private metrics: BotMetrics;
     private tokenDecimals: number = 18;
     private tokenSymbol: string = '';

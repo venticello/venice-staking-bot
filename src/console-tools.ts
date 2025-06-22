@@ -1,4 +1,3 @@
-
 /**
  * Prompts the user for a password in the console without echoing the characters.
  * Handles Backspace, Enter, and Ctrl+C. Masks input with asterisks.
@@ -19,6 +18,7 @@ export async function getPassword(prompt: string): Promise<string> {
       const handleInput = (input: string) => {
         for (let i = 0; i < input.length; i++) {
           const char = input[i];
+          if (!char) continue;
           const charCode = char.charCodeAt(0);
           
           if (charCode === 13 || charCode === 10) { // Enter
