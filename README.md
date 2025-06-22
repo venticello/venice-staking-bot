@@ -24,7 +24,7 @@ An automated staking bot for Base blockchain that periodically claims VVV reward
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/venticello/venice-staking-bot.git
 cd venice-staking-bot
 ```
 
