@@ -1,6 +1,6 @@
 # Venice Staking Bot 🤖
 
-An automated staking bot for Base blockchain that periodically claims rewards and automatically restakes them to maximize your staking returns.
+An automated staking bot for Base blockchain that periodically claims VVV rewards and automatically restakes them to maximize your staking returns.
 
 ## 🚀 Features
 
@@ -62,8 +62,8 @@ interface Config {
 
 ### Default Configuration
 
-```json lines
-{
+```typescript
+const DEFAULT_CONFIG = {
     stakingContractAddress: '0x321b7ff75154472B18EDb199033fF4D116F340Ff',
     tokenContractAddress: '0xacfE6019Ed1A7Dc6f7B508C02d1b04ec88cC21bf',
     intervalHours: 24,
@@ -248,7 +248,7 @@ This bot is provided as-is without warranties. Use at your own risk. Always:
 
 ## 📄 License
 
-MIT License—see LICENSE file for details
+MIT License — see (LICENSE)[LICENSE] file for details
 
 ---
 
