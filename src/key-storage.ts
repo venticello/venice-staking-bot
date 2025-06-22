@@ -1,13 +1,25 @@
-
-// Secure key storage utilities
+/**
+ * Provides utilities for securely encrypting and decrypting a private key.
+ */
 import crypto from "crypto";
 import fs from "fs";
 
+/**
+ * Manages the secure storage of an encrypted private key.
+ */
 class KeyStorage {
+    /** The file where the encrypted key is stored. */
     private static readonly KEY_FILE = '.env.encrypted';
+    /** The length of the salt for PBKDF2. */
     private static readonly SALT_LENGTH = 32;
+    /** The length of the initialization vector (IV) for AES. */
     private static readonly IV_LENGTH = 16;
 
+    /**
+     * Encrypts a private key with a password and saves it to a file.
+     * @param privateKey The private key to encrypt.
+     * @param password The password to use for encryption.
+     */
     static encryptPrivateKey(privateKey: string, password: string): void {
         try {
             const salt = crypto.randomBytes(this.SALT_LENGTH);
@@ -35,6 +47,11 @@ class KeyStorage {
         }
     }
 
+    /**
+     * Decrypts the private key from the storage file using a password.
+     * @param password The password to use for decryption.
+     * @returns The decrypted private key.
+     */
     static decryptPrivateKey(password: string): string {
         try {
             if (!fs.existsSync(this.KEY_FILE)) {

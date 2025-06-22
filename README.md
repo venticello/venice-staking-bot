@@ -18,7 +18,7 @@ An automated staking bot for Base blockchain that periodically claims VVV reward
 - Node.js v16 or higher
 - npm or yarn package manager
 - Base network ETH for gas fees
-- Tokens to stake in the supported staking contract
+- Tokens to stake in the VVV staking contract
 
 ## 🛠️ Installation
 
@@ -33,11 +33,6 @@ cd venice-staking-bot
 npm install
 # or
 yarn install
-```
-
-3. Install required packages:
-```bash
-npm install viem @types/node typescript ts-node
 ```
 
 ## ⚙️ Configuration
@@ -92,7 +87,7 @@ node dist/index.js --setup
 
 2. **Enter a strong password** when prompted (this will encrypt your private key)
 
-3. **Enter your private key** (without 0x prefix)
+3. **Enter your private key** 
 
 The bot will create an encrypted file to store your private key securely.
 
