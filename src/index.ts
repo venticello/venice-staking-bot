@@ -265,6 +265,19 @@ class VeniceStakingBot {
                 this.tokenSymbol
             );
 
+            // Check minimum amount
+            if (this.config.minStakeAmount) {
+                const minAmount = parseUnits(this.config.minStakeAmount, this.tokenDecimals);
+                if (pendingRewards < minAmount) {
+                    this.logger.belowMinStake(
+                        this.formatTokenAmount(pendingRewards),
+                        this.config.minStakeAmount,
+                        this.tokenSymbol
+                    );
+                    return 0n;
+                }
+            }
+
             // Check gas price
             await this.checkGasPrice();
 
