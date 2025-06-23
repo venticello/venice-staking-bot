@@ -1,38 +1,58 @@
-# Use the official Node.js 22 image
-FROM node:22-alpine
+# Build stage
+FROM node:22-alpine AS builder
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json (if present)
+# Copy package files
 COPY package*.json ./
+COPY tsconfig.json ./
 
-# Install dependencies
-RUN npm ci --only=production
+# Install all dependencies (including dev dependencies)
+RUN npm ci
 
 # Copy source code
 COPY src/ ./src/
-COPY tsconfig.json ./
-COPY .env.encrypted ./
-
-# Install TypeScript types for Node.js (dev dependency)
-RUN npm i --save-dev @types/node
-# Install TypeScript globally for compilation
-RUN npm install -g typescript
+#COPY .env.encrypted ./
 
 # Compile TypeScript
-RUN tsc
+RUN npx tsc
 
-# Create a non-root user for security
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nodejs -u 1001
+# Production stage
+FROM node:22-alpine AS production
+
+# Install dumb-init for proper signal handling
+RUN apk add --no-cache dumb-init
+
+# Create non-root user early
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install only production dependencies
+RUN npm ci --only=production && \
+    npm cache clean --force
+
+# Copy compiled JavaScript from build stage
+COPY --from=builder /app/dist ./dist
+# COPY --from=builder /app/.env.encrypted ./
 
 # Change ownership of files
 RUN chown -R nodejs:nodejs /app
+
+# Switch to non-root user
 USER nodejs
 
-# Expose port (if needed)
+# Expose port (uncomment if needed)
 # EXPOSE 3000
+
+# Use dumb-init to handle signals properly
+ENTRYPOINT ["dumb-init", "--"]
 
 # Start the application
 CMD ["node", "dist/index.js"]

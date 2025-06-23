@@ -11,8 +11,8 @@
     "start": "node dist/index.js",
     "dev": "ts-node src/index.ts",
     "docker:build": "docker build -t venice-staking-bot .",
-    "docker:run": "docker run -it --rm --name venice-staking-bot venice-staking-bot",
-    "docker:run-detached": "docker run -d --name venice-staking-bot venice-staking-bot"
+    "docker:run": "docker run -it --rm --name venice-staking-bot -v ./.env.encrypted:/app/.env.encrypted:ro venice-staking-bot",
+    "docker:run-detached": "docker run -d --name venice-staking-bot -v ./.env.encrypted:/app/.env.encrypted:ro venice-staking-bot"
   },
   "dependencies": {
     "viem": "^2.31.2"

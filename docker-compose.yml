@@ -11,7 +11,7 @@ services:
     tty: true         # Для поддержки TTY
     volumes:
       - ./.env.encrypted:/app/.env.encrypted:ro  # Mount the encrypted file
-      - ./logs:/app/logs  # Optional: Mount logs directory
+      - ./bot.log:/app/bot.log  # Optional: Mount log
     environment:
       - NODE_ENV=production
     # Если нужен доступ к сети

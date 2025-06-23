@@ -33,6 +33,7 @@ docker build -t venice-staking-bot .
 # Run the container interactively
 docker run -it --name venice-staking-bot \
   -v $(pwd)/.env.encrypted:/app/.env.encrypted:ro \
+  -v $(pwd)/bot.log:/app/bot.log \
   venice-staking-bot
 
 # After entering password and seeing "✅ Wallet and contracts initialized"
@@ -43,11 +44,11 @@ docker run -it --name venice-staking-bot \
 
 ```bash
 # Start with docker-compose
-docker-compose run --name venice-staking-bot-bg venice-staking-bot
+docker-compose run --name venice-staking-bot venice-staking-bot
 
 # Or using up command
 docker-compose up -d
-docker exec -it venice-staking-bot-bg /bin/sh
+docker exec -it venice-staking-bot /bin/sh
 ```
 
 ## Usage Instructions
@@ -82,20 +83,6 @@ docker stats venice-staking-bot
 
 # Reattach to container (if needed)
 docker attach venice-staking-bot
-```
-
-### 3. Using Screen Session (Alternative)
-
-Build with screen support:
-
-```bash
-# Build alternative Dockerfile with screen
-docker build -f Dockerfile.screen -t venice-staking-bot-screen .
-
-# Run with screen session
-docker run -it --name venice-staking-bot-screen venice-staking-bot-screen
-
-# Inside container, detach from screen with: Ctrl+A, D
 ```
 
 ## Container Management
@@ -181,7 +168,7 @@ The application requires mounting the encrypted private key:
 -v $(pwd)/.env.encrypted:/app/.env.encrypted:ro
 
 # Optional: Mount logs directory
--v $(pwd)/logs:/app/logs
+-v $(pwd)/bot.log:/app/bot.log
 ```
 
 ## Docker Compose Configurations
@@ -198,6 +185,7 @@ services:
     tty: true
     volumes:
       - ./.env.encrypted:/app/.env.encrypted:ro
+      - ./bot.log:/app/bot.log  # Optional: Mount log
     restart: unless-stopped
 ```
 
@@ -213,7 +201,7 @@ services:
     tty: true
     volumes:
       - ./.env.encrypted:/app/.env.encrypted:ro
-      - ./logs:/app/logs
+      - ./bot.log:/app/bot.log  # Optional: Mount log
     environment:
       - NODE_ENV=production
       - LOG_LEVEL=info
@@ -272,7 +260,7 @@ docker run -it --name venice-staking-bot \
   venice-staking-bot
 ```
 
-### Container Health Check
+### Container Health Check (if docker compose with health check)
 
 ```bash
 # Check if container is healthy

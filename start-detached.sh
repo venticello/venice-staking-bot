@@ -5,10 +5,10 @@
 
 set -e
 
-CONTAINER_NAME="vsb-container"
+CONTAINER_NAME="venice-staking-bot"
 IMAGE_NAME="venice-staking-bot"
 
-echo "🚀 Starting Transaction Sender..."
+echo "🚀 Starting Venice Staking Bot..."
 
 # Check container exist
 if docker ps -a --format 'table {{.Names}}' | grep -q "^${CONTAINER_NAME}$"; then
@@ -26,7 +26,7 @@ if docker ps -a --format 'table {{.Names}}' | grep -q "^${CONTAINER_NAME}$"; the
         docker attach ${CONTAINER_NAME}
     fi
 else
-    echo "🏗️  Creating new container..."
+    echo "🏗️Creating new container..."
 
     # Check image exists
     if ! docker images --format 'table {{.Repository}}' | grep -q "^${IMAGE_NAME}$"; then
@@ -52,6 +52,7 @@ else
     # Start container in interactive mode
     docker run -it --name ${CONTAINER_NAME} \
         -v "$(pwd)/.env.encrypted:/app/.env.encrypted:ro" \
+        -v "$(pwd)/bot.log:/app/bot.log" \
         ${IMAGE_NAME}
 fi
 
