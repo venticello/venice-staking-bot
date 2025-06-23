@@ -18,6 +18,25 @@ const DEFAULT_CONFIG: Config = {
     enableMetrics: true
 };
 
+function loadConfig(): Config {
+    return {
+        stakingContractAddress: process.env.STAKING_CONTRACT_ADDRESS as `0x${string}` || DEFAULT_CONFIG.stakingContractAddress,
+        tokenContractAddress: process.env.TOKEN_CONTRACT_ADDRESS as `0x${string}` || DEFAULT_CONFIG.tokenContractAddress,
+        intervalHours: parseInt(process.env.INTERVAL_HOURS || DEFAULT_CONFIG.intervalHours.toString()),
+        maxRetries: parseInt(process.env.MAX_RETRIES || DEFAULT_CONFIG.maxRetries.toString()),
+        baseDelay: parseInt(process.env.BASE_DELAY || DEFAULT_CONFIG.baseDelay.toString()),
+        gasLimitMultiplier: parseFloat(process.env.GAS_LIMIT_MULTIPLIER || DEFAULT_CONFIG.gasLimitMultiplier.toString()),
+        rpcUrl: process.env.RPC_URL || DEFAULT_CONFIG.rpcUrl,
+        minStakeAmount: process.env.MIN_STAKE_AMOUNT || DEFAULT_CONFIG.minStakeAmount,
+        maxGasPrice: process.env.MAX_GAS_PRICE || DEFAULT_CONFIG.maxGasPrice,
+        healthCheckInterval: parseInt(
+            process.env.HEALTH_CHECK_INTERVAL || DEFAULT_CONFIG.healthCheckInterval.toString()),
+        enableMetrics: process.env.ENABLE_METRICS === 'true' || DEFAULT_CONFIG.enableMetrics
+    };
+}
+
+export const config = loadConfig();
+
 /**
  * Extended ABIs with additional functions.
  */
@@ -38,4 +57,4 @@ const ERC20_ABI = parseAbi([
     'function name() view returns (string)'
 ]);
 
-export { STAKING_ABI, ERC20_ABI, DEFAULT_CONFIG };
+export {STAKING_ABI, ERC20_ABI, DEFAULT_CONFIG};

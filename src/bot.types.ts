@@ -17,15 +17,15 @@ interface Config {
     /** The multiplier for the gas limit estimation. */
     gasLimitMultiplier: number;
     /** The RPC URL for the blockchain network. */
-    rpcUrl?: string;
+    rpcUrl: string;
     /** The minimum amount to stake. */
-    minStakeAmount?: string;
+    minStakeAmount: string;
     /** The maximum gas price in gwei to execute a transaction. */
-    maxGasPrice?: string;
+    maxGasPrice: string;
     /** The interval in minutes for health checks. */
-    healthCheckInterval?: number;
+    healthCheckInterval: number;
     /** Whether to enable metrics collection. */
-    enableMetrics?: boolean;
+    enableMetrics: boolean;
 }
 
 /**

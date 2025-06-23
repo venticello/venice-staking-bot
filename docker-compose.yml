@@ -7,14 +7,14 @@ services:
       dockerfile: Dockerfile
     container_name: venice-staking-bot
     restart: unless-stopped
-    stdin_open: true  # Для интерактивного ввода
-    tty: true         # Для поддержки TTY
+    stdin_open: true  # For interactive input
+    tty: true         # TTY (Teletypewriter) support
     volumes:
       - ./.env.encrypted:/app/.env.encrypted:ro  # Mount the encrypted file
       - ./bot.log:/app/bot.log  # Optional: Mount log
     environment:
       - NODE_ENV=production
-    # Если нужен доступ к сети
+    # If network needed
     # networks:
     #   - app-network
 

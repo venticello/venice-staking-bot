@@ -213,6 +213,35 @@ services:
       retries: 3
 ```
 
+### ENVIRONMENT VARIABLES
+
+```yaml
+# Docker Compose with Environment Variables
+# docker-compose.yml
+version: '3.8'
+services:
+   venice-staking-bot:
+      build: .
+      container_name: venice-staking-bot
+      stdin_open: true
+      tty: true
+      volumes:
+         - ./.env.encrypted:/app/.env.encrypted:ro
+         - ./bot.log:/app/bot.log  # Optional: Mount log
+      environment:
+      - INTERVAL_HOURS=24
+      - GAS_LIMIT_MULTIPLIER=1.2
+      - RPC_URL=https://mainnet.base.org
+      - MIN_STAKE_AMOUNT=0.001
+      - MAX_GAS_PRICE=50
+      - HEALTH_CHECK_INTERVAL=60
+      - ENABLE_METRICS=true
+      # Or use env_file for a cleaner approach
+      env_file:
+      - .env.production
+      restart: unless-stopped
+```
+
 ## Troubleshooting
 
 ### Common Issues

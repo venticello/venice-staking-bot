@@ -14,7 +14,7 @@ import {getPassword} from './console-tools';
 import {Logger} from './logger';
 import {KeyStorage} from "./key-storage";
 import {BotError, BotMetrics, ErrorType, Config} from "./bot.types"
-import {DEFAULT_CONFIG, ERC20_ABI, STAKING_ABI} from "./constants";
+import {DEFAULT_CONFIG, ERC20_ABI, STAKING_ABI, config} from "./constants";
 
 /**
  * The main class for the Venice Staking Bot, with enhanced features.
@@ -34,8 +34,8 @@ class VeniceStakingBot {
     private tokenDecimals: number = 18;
     private tokenSymbol: string = '';
 
-    constructor(config: Partial<Config> = {}) {
-        this.config = {...DEFAULT_CONFIG, ...config};
+    constructor(configPartial: Partial<Config> = {}) {
+        this.config = {...config, ...configPartial};
         this.logger = new Logger();
         this.metrics = this.initializeMetrics();
         this.setupClients();
